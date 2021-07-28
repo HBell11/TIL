@@ -35,9 +35,29 @@
 #     T -= 1
 
 
-# RuntimeError
-# while문 사용해서 구현
 
+# while문 사용해서 구현
+T = int(input())
+
+i = 0
+while i < T:
+    N = int(input())
+    my_list = list(map(int, input().split()))
+    my_list = my_list[::-1]
+    max_num = my_list[0]
+    my_sum = 0
+
+    for j in range(1, len(my_list)):
+        if max_num > my_list[j]:
+            my_sum += max_num - my_list[j]
+        else:
+            max_num = my_list[j]
+
+    print('#{} {}'.format(i+1, my_sum))
+    i += 1
+
+
+# Error 골칫덩어리
 # T = int(input())
 # while T > 0:
 #     N = int(input())
@@ -52,24 +72,24 @@
 #         else:
 #             max_num = my_list[i]
 
-#     print('#{} {}'.format(len(my_list) - T + 1, my_sum))
+#     # len(my_list) - T - 1 이 부분을 수정해야 함
+#     print('#{} {}'.format(len(my_list) - T - 1, my_sum))
 #     T -= 1
-
 
 # for문을 사용해서 구현
 
-T = int(input())
-for j in range(T):
-    N = int(input())
-    my_list = list(map(int, input().split()))
-    my_list = my_list[::-1]
-    max_num = my_list[0]
-    my_sum = 0
+# T = int(input())
+# for j in range(T):
+#     N = int(input())
+#     my_list = list(map(int, input().split()))
+#     my_list = my_list[::-1]
+#     max_num = my_list[0]
+#     my_sum = 0
 
-    for i in range(1, len(my_list)):
-        if max_num > my_list[i]:
-            my_sum += max_num - my_list[i]
-        else:
-            max_num = my_list[i]
+#     for i in range(1, len(my_list)):
+#         if max_num > my_list[i]:
+#             my_sum += max_num - my_list[i]
+#         else:
+#             max_num = my_list[i]
 
-    print('#{} {}'.format(j+1, my_sum))
+#     print('#{} {}'.format(j+1, my_sum))
