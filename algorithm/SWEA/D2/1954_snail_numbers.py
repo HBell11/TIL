@@ -1,70 +1,58 @@
-#####
-####
-# 아직 못 풂
-
-
 T = int(input())
+idx = 1
 
-i = 1
-while i <= T:
+while idx <= T:
+    n = int(input())
 
-    N = int(input())
-    main_array = [[0]*N]*N
+    ans_list = [[0] * n for _ in range(n)]
+    d = 0
+    r = c = 0
+    input_in_row = n
 
-    my_type = 0
+    num = 1
+    while num <= n * n:
+        if d == 0:
+            for i in range(input_in_row):
+                ans_list[r][c + i] = num
+                num += 1
+            else:
+                r += 1
+                c += i
 
-    j = 1
-    while j <= N*N:
-        print(j)
-        
-        row, col = 0, 0
+        if d == 1:
+            for i in range(input_in_row):
+                ans_list[r + i][c] = num
+                num += 1
+            else:
+                r += i
+                c -= 1
 
-        # 오른쪽으로
-        if my_type % 4 == 0:
-            for n1 in range(N):
-                if main_array[row][col+n1] == 0:
-                    main_array[row][col+n1] = j
-                    j += 1
-                else:
-                    col += n1
-                    my_type += 1
-                    break
+        if d == 2:
+            for i in range(input_in_row):
+                ans_list[r][c - i] = num
+                num += 1
+            else:
+                r -= 1
+                c -= i
 
-        # 아래로
-        elif my_type % 4 == 1:
-            for n2 in range(N):
-                if main_array[row+n2][col] == 0:
-                    main_array[row+n2][col] = j
-                    j += 1
-                else:
-                    row += n2
-                    my_type += 1
-                    break
+        if d == 3:
+            for i in range(input_in_row):
+                ans_list[r - i][c] = num
+                num += 1
+            else:
+                r -= i
+                c += 1
 
-        # 왼쪽으로
-        elif my_type % 4 == 2:
-            for n3 in range(N):
-                if main_array[row][col-n3] == 0:
-                    main_array[row][col-n3] = j
-                    j += 1
-                else:
-                    col -= n3
-                    my_type += 1
-                    break
+        d = (d + 1) % 4
 
-        # 위로
-        else:
-            for n4 in range(N):
-                if main_array[row-n4][col] == 0:
-                    main_array[row-n4][col] = j
-                    j += 1
-                else:
-                    row -= n4
-                    my_type += 1
-                    break
+        if d & 1:
+            input_in_row -= 1
 
-    print(f'#{i}')
+    print("#{}".format(idx))
 
-    # print(main_array)
-    
-    i += 1
+    for i in range(n):
+        for j in range(n):
+            print(ans_list[i][j], end=" ")
+        print()
+
+    idx += 1
