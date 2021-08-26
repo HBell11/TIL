@@ -7,5 +7,7 @@ n = int(input())
 cuts = [list(map(int, input().split())) for _ in range(n)]
 
 for cut in cuts:
-    if cut[0] == 0:
+    if cut[0] == 0:     # 가로이면
+
+    else:               # 세로이면
         pass

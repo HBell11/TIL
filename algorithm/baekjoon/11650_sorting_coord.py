@@ -8,7 +8,7 @@ for _ in range(N):
     x, y = map(int, sys.stdin.readline().split())
     coord_list.append([x, y])
 
-coord_list.sort(key=lambda x: (x[0], x[1]))
+coord_list.sort(key=lambda k: (k[0], k[1]))
 
 for i in range(N):
     print(*coord_list[i])
