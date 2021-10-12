@@ -4,6 +4,10 @@ input = sys.stdin.readline
 
 
 def union(a, b):
+    # a = parents[a]
+    # b = parents[b]
+
+    if parents[a] != parents[b]:
 
     pass
 
@@ -32,8 +36,8 @@ for _ in range(m):
 
     if not chk:     # 합집합
 
-        # union(a, b)
-        pass
+        union(a, b)
+        # pass
 
         # idx1 = idx2 = 0
         # for idx, my_set in enumerate(set_list):
