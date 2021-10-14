@@ -4,10 +4,35 @@ N = int(input())
 
 sentence = input()
 
-nums = []
-for _ in range(N):
-    nums.append(int(input()))
+nums = {}
+for i in range(N):
+    nums[chr(i + ord('A'))] = int(input())
 
+tmp = []
 for idx in range(len(sentence)):
-    if sentence[idx] == '*':
-        pass
+    char = sentence[idx]
+
+    if char == '*':
+        b = tmp.pop()
+        a = tmp.pop()
+        tmp.append(a*b)
+
+    elif char == '+':
+        b = tmp.pop()
+        a = tmp.pop()
+        tmp.append(a+b)
+
+    elif char == '/':
+        b = tmp.pop()
+        a = tmp.pop()
+        tmp.append(a/b)
+
+    elif char == '-':
+        b = tmp.pop()
+        a = tmp.pop()
+        tmp.append(a-b)
+
+    else:
+        tmp.append(nums[char])
+
+print('{:.2f}'.format(*tmp))
