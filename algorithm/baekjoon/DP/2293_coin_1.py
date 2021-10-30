@@ -12,4 +12,4 @@ for coin in coins:
 
     for j in range(coin, k+1):
         dp[j] += dp[j-coin]
-    print(dp)
+    print(dp[n])
