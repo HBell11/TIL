@@ -18,5 +18,5 @@ for i in range(1, n):
 
 
 # print(acc)
-print(dp)
+# print(dp)
 print(dp[-1])
