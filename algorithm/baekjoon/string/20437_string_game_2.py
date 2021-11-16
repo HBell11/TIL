@@ -1,11 +1,10 @@
 # https://www.acmicpc.net/problem/20437
-
-# TimeError
 import sys
 input = sys.stdin.readline
 
 T = int(input())
 
+# Sol 1
 for _ in range(T):
     W = input()
     K = int(input())
@@ -26,15 +25,10 @@ for _ in range(T):
         ans1 = ans2 = 1
 
     else:
-        print(dp)
         for j in range(26):
             if len(dp[j]) >= K:
                 for k in range(K-1, len(dp[j])):
-                    print('j, k: ', j, k)
                     tmp = dp[j][k] - dp[j][k-K+1] + 1
-
-                    print('tmp: ', tmp)
-
                     ans1 = min(ans1, tmp)
                     ans2 = max(ans2, tmp)
 
@@ -43,6 +37,9 @@ for _ in range(T):
     else:
         print(ans1, ans2)
 
+
+# Sol 2
+# Only for PyPy3
 # for _ in range(T):
 #     W = input()
 #     K = int(input())
